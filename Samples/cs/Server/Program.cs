@@ -37,9 +37,9 @@ namespace Server
             public MyServer(string service) : base(service)
             {
                 // Create a timer that will be used to advise clients of new data.
-                _Timer.Elapsed += this.OnTimerElapsed;
+                _Timer.Elapsed += OnTimerElapsed;
                 _Timer.Interval = 1000;
-                _Timer.SynchronizingObject = this.Context;
+                _Timer.SynchronizingObject = Context;
             }
 
             private void OnTimerElapsed(object sender, ElapsedEventArgs args)
@@ -153,7 +153,7 @@ namespace Server
             protected override byte[] OnAdvise(string topic, string item, int format)
             {
                 Console.WriteLine("OnAdvise:".PadRight(16)
-                    + " Service='" + this.Service + "'"
+                    + " Service='" + Service + "'"
                     + " Topic='" + topic + "'"
                     + " Item='" + item + "'"
                     + " Format=" + format.ToString());
@@ -165,9 +165,6 @@ namespace Server
                 }
                 return null;
             }
-
         } // class
-
     } // class
-
 } // namespace
